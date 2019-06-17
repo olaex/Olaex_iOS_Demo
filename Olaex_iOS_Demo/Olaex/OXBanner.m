@@ -13,8 +13,8 @@
 #import <AdSupport/AdSupport.h>
 #import <CommonCrypto/CommonDigest.h>
 
-NSString * const OXAD_APIURL = @"https://api.olaexbiz.com/v1/ads";
-NSString * const OXAD_TEMPLATE = @"<html><head><meta name=\"viewport\" content=\"width=device-width\"/><style>body{margin:0;padding:0;}</style></head><body><div align=\"center\">%@</div></body></html>";
+static NSString * const OXAD_APIURL = @"https://api.olaexbiz.com/v1/ads";
+static NSString * const OXAD_TEMPLATE = @"<html><head><meta name=\"viewport\" content=\"width=device-width\"/><style>body{margin:0;padding:0;}</style></head><body><div align=\"center\">%@</div></body></html>";
 
 @interface OXBannerItem ()
 
