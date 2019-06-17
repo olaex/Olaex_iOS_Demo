@@ -13,6 +13,9 @@
 #import <AdSupport/AdSupport.h>
 #import <CommonCrypto/CommonDigest.h>
 
+NSString * const OXAD_APIURL = @"https://api.olaexbiz.com/v1/ads";
+NSString * const OXAD_TEMPLATE = @"<html><head><meta name=\"viewport\" content=\"width=device-width\"/><style>body{margin:0;padding:0;}</style></head><body><div align=\"center\">%@</div></body></html>";
+
 @interface OXBannerItem ()
 
 @property (nonatomic, copy) NSString *type;
@@ -29,7 +32,7 @@
         self.type = adData[@"adType"];
         self.width = [adData[@"width"] integerValue];
         self.height = [adData[@"height"] integerValue];
-        self.content = adData[@"bannerAd"][@"content"];
+        self.content = [NSString stringWithFormat:OXAD_TEMPLATE, adData[@"bannerAd"][@"content"]];
     }
     
     return self;
@@ -76,8 +79,6 @@ const struct {
     .model = @"model",
     .lang = @"lang",
 };
-
-NSString * const OXAPI_URL = @"https://api.olaexbiz.com/v1/ads";
 
 @interface OXBanner ()
 
@@ -127,7 +128,7 @@ NSString * const OXAPI_URL = @"https://api.olaexbiz.com/v1/ads";
     }
     
     NSError *err;
-    NSURL *url = [NSURL URLWithString:OXAPI_URL];
+    NSURL *url = [NSURL URLWithString:OXAD_APIURL];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url
                                                                 cachePolicy:NSURLRequestUseProtocolCachePolicy
                                                             timeoutInterval:60.0];
