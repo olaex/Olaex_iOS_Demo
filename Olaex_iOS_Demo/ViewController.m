@@ -84,6 +84,12 @@
     decisionHandler(WKNavigationActionPolicyAllow);
 }
 
+- (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(WKNavigation *)navigation {
+    [[UIApplication sharedApplication] openURL:webView.URL
+                                       options:@{}
+                             completionHandler:nil];
+}
+
 #pragma mark - WKUIDelegate
 - (WKWebView*)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures{
     if (!navigationAction.targetFrame.isMainFrame) {
