@@ -85,6 +85,7 @@
 }
 
 - (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(WKNavigation *)navigation {
+    [webView stopLoading];
     [[UIApplication sharedApplication] openURL:webView.URL
                                        options:@{}
                              completionHandler:nil];
