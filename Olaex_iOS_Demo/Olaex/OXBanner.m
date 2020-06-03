@@ -220,6 +220,9 @@ const struct {
 
 - (NSDictionary *)getJSONBody {
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    if (_debug) {
+        [dict setObject:@"1" forKey:RequestKey.test];
+    }
     [dict setObject:_appKey forKey:RequestKey.appKey];
     [dict setObject:_requestType forKey:RequestKey.requestType];
     [dict setObject:_timestramp forKey:RequestKey.timestamp];
@@ -233,13 +236,8 @@ const struct {
     [dict setObject:_userAgent forKey:RequestKey.userAgent];
     [dict setObject:_model forKey:RequestKey.model];
     [dict setObject:_lang forKey:RequestKey.lang];
-    
-    if (_debug) {
-        [dict setObject:@"1" forKey:RequestKey.test];
-    } else {
-        NSString *sign = [self genSign:dict];
-        [dict setObject:sign forKey:RequestKey.sign];
-    }
+    NSString *sign = [self genSign:dict];
+    [dict setObject:sign forKey:RequestKey.sign];
     
     return dict;
 }

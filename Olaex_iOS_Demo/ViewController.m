@@ -54,7 +54,7 @@
     request.auid = @"10000";
     request.auid = @"10001"; // 300x250
     
-    //    request.debug = YES;
+    request.debug = YES;
     
     __weak typeof(self) weakSelf = self;
     [request loadSuccess:^(OXBannerItem * _Nonnull ad) {
